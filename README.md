@@ -1,8 +1,4 @@
-# Biblioteca Requests Python - Exemplos de Utilização
-
-![Python Requests Banner](/api/placeholder/850/250 "Python Requests API")
-
-Este repositório contém exemplos práticos de como utilizar a biblioteca Requests em Python para realizar requisições HTTP e processar diferentes tipos de respostas.
+# 🌐 Biblioteca Requests Python - Exemplos de Utilização
 
 ## 📋 Índice
 
@@ -15,8 +11,6 @@ Este repositório contém exemplos práticos de como utilizar a biblioteca Reque
 - [Como Executar](#como-executar)
 
 ## 🔍 Requisição de CEP em formato XML
-
-![XML Request Illustration](/api/placeholder/750/300 "Requisição XML")
 
 **Arquivo:** `RequestXML_Q1.py`
 
@@ -34,7 +28,7 @@ else:
     print('Nao houve sucesso na requisicao.')
 ```
 
-### Como funciona:
+### ⚙️ Como funciona:
 1. Importa a biblioteca requests
 2. Define a URL base do serviço ViaCEP
 3. Especifica o CEP que deseja consultar
@@ -43,7 +37,7 @@ else:
 6. Verifica se a requisição foi bem-sucedida (código 200)
 7. Exibe o conteúdo XML retornado pela API
 
-### Exemplo de saída:
+### 📝 Exemplo de saída:
 ```xml
 <xmlcep>
   <cep>30140071</cep>
@@ -59,9 +53,9 @@ else:
 </xmlcep>
 ```
 
-## 🔄 Requisição em Loop para Múltiplos CEPs
+---
 
-![Loop Requests Illustration](/api/placeholder/750/300 "Requisições em Loop")
+## 🔄 Requisição em Loop para Múltiplos CEPs
 
 **Arquivo:** `LoopRequest_Q2.py`
 
@@ -83,18 +77,19 @@ for cep in ceps:
         print('Nao houve sucesso na requisicao.')
 ```
 
-### Como funciona:
+### ⚙️ Como funciona:
 1. Define uma lista com múltiplos CEPs para consulta
 2. Para cada CEP na lista, executa uma requisição GET
 3. Formata as informações retornadas em JSON
 4. Exibe os dados de cada CEP de forma organizada
 
-### Fluxograma do processo:
-
-![Loop Process Flowchart](/api/placeholder/600/350 "Fluxograma do processo de loop")
-
-### Exemplo de saída parcial:
+### 📊 Fluxo do processo:
 ```
+Início ➡️ Percorre lista de CEPs ➡️ Faz requisição para cada CEP ➡️ Verifica sucesso ➡️ Exibe resultado ➡️ Fim
+```
+
+### 📝 Exemplo de saída parcial:
+```json
 Imprimindo as informações do CEP:30140071
 
 JSON :  {'cep': '30140-071', 'logradouro': 'Rua dos Aimorés', 'complemento': 'até 699/700', 'bairro': 'Funcionários', 'localidade': 'Belo Horizonte', 'uf': 'MG', 'ibge': '3106200', 'gia': '', 'ddd': '31', 'siafi': '4123'}
@@ -103,9 +98,9 @@ Imprimindo as informações do CEP:30140072
 ...
 ```
 
-## 🏙️ Busca de CEP por Endereço
+---
 
-![Address Search Illustration](/api/placeholder/750/300 "Busca por Endereço")
+## 🏙️ Busca de CEP por Endereço
 
 **Arquivo:** `RequestRua_Q3.py`
 
@@ -127,17 +122,18 @@ else:
     print('Nao houve sucesso na requisicao.')
 ```
 
-### Estrutura da URL:
+### 🔍 Estrutura da URL:
+```
+https://viacep.com.br/ws/[UF]/[CIDADE]/[LOGRADOURO]/[FORMATO]/
+```
 
-![URL Structure](/api/placeholder/700/200 "Estrutura da URL")
-
-### Como funciona:
+### ⚙️ Como funciona:
 1. Define os parâmetros de busca: UF, cidade e logradouro
 2. Utiliza f-string para formatar a URL com todos os parâmetros
 3. Executa a requisição GET para busca por endereço
 4. Exibe os resultados em formato JSON
 
-### Exemplo de saída:
+### 📝 Exemplo de saída:
 ```json
 Json: [
   {
@@ -163,14 +159,13 @@ Json: [
     "gia": "",
     "ddd": "31",
     "siafi": "4123"
-  },
-  ...
+  }
 ]
 ```
 
-## ⚠️ Tratamento de Erros em Requisições
+---
 
-![Error Handling Illustration](/api/placeholder/750/300 "Tratamento de Erros")
+## ⚠️ Tratamento de Erros em Requisições
 
 **Arquivo:** `RequestErro_Q4.py`
 
@@ -188,24 +183,28 @@ else:
     print('Nao houve sucesso na requisicao.')
 ```
 
-### Códigos de Status HTTP Comuns:
+### 🚦 Códigos de Status HTTP Comuns:
+```
+200 - OK (Sucesso)
+400 - Bad Request (Requisição inválida)
+404 - Not Found (Não encontrado)
+500 - Internal Server Error (Erro interno do servidor)
+```
 
-![HTTP Status Codes](/api/placeholder/650/250 "Códigos de Status HTTP")
-
-### Como funciona:
+### ⚙️ Como funciona:
 1. Tenta realizar uma requisição para um caminho inexistente ("/abc/")
 2. Verifica o código de status HTTP da resposta
 3. Como o caminho não existe, o código de status não será 200
 4. Exibe a mensagem de erro quando a requisição falha
 
-### Saída esperada:
+### 📝 Saída esperada:
 ```
 Nao houve sucesso na requisicao.
 ```
 
-## 💾 Salvando Resultado de Requisições em Arquivo
+---
 
-![File Saving Illustration](/api/placeholder/750/300 "Salvando em Arquivo")
+## 💾 Salvando Resultado de Requisições em Arquivo
 
 **Arquivo:** `RequestWrite_Q5.py`
 
@@ -222,19 +221,20 @@ else:
     print('Nao houve sucesso na requisicao.')
 ```
 
-### Processo de Escrita em Arquivo:
+### 📋 Processo de Escrita em Arquivo:
+```
+1. Realiza requisição HTTP ➡️ 2. Verifica sucesso ➡️ 3. Abre arquivo para escrita ➡️ 4. Escreve resposta no arquivo
+```
 
-![File Writing Process](/api/placeholder/650/300 "Processo de Escrita em Arquivo")
-
-### Como funciona:
+### ⚙️ Como funciona:
 1. Realiza uma busca no Google pelo termo "elson de abreu"
 2. Abre um arquivo de texto para escrita
 3. Se a requisição for bem-sucedida, salva o conteúdo HTML da página no arquivo
 4. Exibe uma mensagem de sucesso após salvar o conteúdo
 
-## 📋 Requisitos
+---
 
-![Requirements](/api/placeholder/750/200 "Requisitos")
+## 📋 Requisitos
 
 Para executar estes scripts, você precisará ter:
 
@@ -244,24 +244,49 @@ Para executar estes scripts, você precisará ter:
 
 ## 🚀 Como Executar
 
-![Execution Steps](/api/placeholder/750/250 "Passos para Execução")
-
 1. Clone este repositório
 2. Instale as dependências:
-   ```
+   ```bash
    pip install requests pandas
    ```
 3. Execute o script desejado:
-   ```
+   ```bash
    python Scrips/RequestXML_Q1.py
    ```
    
 ---
 
-### 📝 Notas
+### 📝 Notas Importantes
 
 - Certifique-se de ter conexão com a internet para que as requisições funcionem corretamente
 - A API ViaCEP utilizada nos exemplos é gratuita e de uso público
 - Crie a pasta `FileWrite` no diretório pai se for executar o script `RequestWrite_Q5.py`
 
-![Footer](/api/placeholder/850/150 "Python Requests")
+---
+
+## 📊 Tabela Comparativa dos Scripts
+
+| Script | Funcionalidade | Formato | Particularidade |
+|--------|----------------|---------|-----------------|
+| RequestXML_Q1.py | Consulta CEP único | XML | Retorna dados em XML |
+| LoopRequest_Q2.py | Consulta múltiplos CEPs | JSON | Usa loop para processar lista |
+| RequestRua_Q3.py | Busca por endereço | JSON | Busca reversa (endereço → CEP) |
+| RequestErro_Q4.py | Tratamento de erros | JSON | Demonstra falha proposital |
+| RequestWrite_Q5.py | Salvar em arquivo | HTML | Armazena resposta em arquivo |
+
+---
+
+## 🔄 Diagrama do Fluxo de Requisições
+
+```
+┌────────────┐     ┌─────────────┐     ┌────────────┐     ┌──────────────┐
+│  Parâmetros │────▶│  Requisição  │────▶│  Verificação │────▶│  Processamento │
+└────────────┘     └─────────────┘     │   de Status  │     └──────────────┘
+                                       └────────────┘
+                                             │
+                                             ▼
+                                    ┌─────────────────┐
+                                    │    Tratamento    │
+                                    │     de Erro      │
+                                    └─────────────────┘
+```
