@@ -6,7 +6,6 @@ r = requests.get(url + cep + formato)
 if (r.status_code == 200):
 
     print("XML:", r.text)
-
-
+    
 else:
  print('Nao houve sucesso na requisicao.')
